@@ -55,7 +55,6 @@ used the **MongoDB** database.
 **Github Link :** https://github.com/theGDM/Droame-Autonomous-Skies
 
 **Video Description Link :**
-https://drive.google.com/drive/folders/1ZvhdHpC7PCb9lMncWpZ9eoSfgN0TMPki?usp=sha
-re_link
+https://drive.google.com/drive/folders/1ZvhdHpC7PCb9lMncWpZ9eoSfgN0TMPki?usp=share_link
 
 
