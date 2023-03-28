@@ -5,7 +5,8 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import authRoute from './routes/auth.js';
 import operatorRoute from './routes/operator.js';
-import customerRoute from './routes/customer.js'
+import customerRoute from './routes/customer.js';
+import bookingRoute from './routes/booking.js';
 
 const app = express();
 dotenv.config(); //to use .env we have to make some configuration
@@ -38,6 +39,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/api/auth", authRoute);
 app.use("/api/operators", operatorRoute);
 app.use("/api/customers", customerRoute);
+app.use("/api/bookings", bookingRoute);
 
 //error handling middleware
 app.use((err, req, res, next) => {
