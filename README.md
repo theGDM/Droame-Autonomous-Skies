@@ -1,4 +1,4 @@
-**Problem Statements :**
+## **Problem Statements :**
 
 - Droame has deployed its autonomous aerial videography services at several tourist
     Destinations. Assume that you are a product engineer at Drome, and are in charge of
@@ -7,7 +7,7 @@
     customers and their bookings of drone shots.
 - You also have to store this data in the backend tables.
 
-**Solution :**
+## **Solution :**
 
 To solve this problem, I have divided it into three portions. Operator, Customer and
 Bookings. Operator is the person, who is having the drones available with him, which he
@@ -25,36 +25,36 @@ name, email, phone number, and array of object which will keep the booking id in
 Booking schema have fields like drone number, i.e. which drone picked by the customer,
 and for the duration of use.
 
-**Tools Used :
-FrontEnd :** To make the UI of the web application, I have used the **React.js** library, **HTML** ,
+## **Tools Used :
+**`FrontEnd :`** To make the UI of the web application, I have used the **React.js** library, **HTML** ,
 and for making the UI more enhancing I have used the **Vanila CSS**.
 
-**BackEnd :** Backend is made using the **Node.js** , **Express.js**
+**`BackEnd :`** Backend is made using the **Node.js** , **Express.js**
 
-**Database :** For storing the Operators data, customers data, and booking information I have
+**`Database :`** For storing the Operators data, customers data, and booking information I have
 used the **MongoDB** database.
 
 
-**Deployment :** Currently the web application is only pushed to the **Github**.
+**`Deployment :`** Currently the web application is only pushed to the **Github**.
 
-**Steps to Run the Application:**
+## **Steps to Run the Application:**
 
 1. Firstly fork the given repo.
 2. Create a folder named ‘Droame’ in Visual Studio.
 3. Clone the github repo to the respective ‘Drome’ folder, using the command,
-    $git clone https://github.com/YOUR-USERNAME/REPO-NAME
+    `$git clone https://github.com/YOUR-USERNAME/REPO-NAME`
 4. Now go to the ‘api’ directory
-5. Now open the terminal and run the command npm install in the same directory, so
+5. Now open the terminal and run the command `npm install` in the same directory, so
     It will install all the libraries and the modules.
-6. Now start the express server using the command nodemon index.js
+6. Now start the express server using the command `nodemon index.js`.
 7. Now go the ‘client’ directory and then into the ‘drome’ directory.
-8. Again open the terminal and run the command npm install in the same directory, so
+8. Again open the terminal and run the command `npm install` in the same directory, so
     It will install all the libraries and the modules.
-9. Now run the react app using the command npm start
+9. Now run the react app using the command `npm start`
 
-**Github Link :** https://github.com/theGDM/Droame-Autonomous-Skies
+**`Github Link :`** https://github.com/theGDM/Droame-Autonomous-Skies
 
-**Video Description Link :**
+**`Video Description Link :`**
 https://drive.google.com/drive/folders/1ZvhdHpC7PCb9lMncWpZ9eoSfgN0TMPki?usp=share_link
 
 
