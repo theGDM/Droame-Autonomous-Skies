@@ -11,7 +11,7 @@ function Booking() {
     const user = JSON.parse(window.localStorage.getItem('user')) || null;
     const [deleted, setDelete] = useState(false);
     const { data, loading, error } = useFetch("http://localhost:8800/api/customers");
-    console.log(data);
+    console.log("fetched data" + data);
 
     let list = data.filter((item) => {
         return item.OperatorId == user?._id;
@@ -21,6 +21,18 @@ function Booking() {
         console.log(cusData);
         window.localStorage.removeItem("customer");
         localStorage.setItem("customer", JSON.stringify(cusData));
+    }
+
+    const onClickHandleAddBooking = async (cusData) => {
+        window.localStorage.removeItem("customer");
+        localStorage.setItem("customer", JSON.stringify(cusData));
+    }
+
+    const onClickHandleUpdateBooking = async (cusData, bookData) => {
+        window.localStorage.removeItem("customer");
+        localStorage.setItem("customer", JSON.stringify(cusData));
+        window.localStorage.removeItem("booking");
+        localStorage.setItem("booking", JSON.stringify(bookData));
     }
 
     const onClickHandleDelate = async (cusData) => {
@@ -59,13 +71,26 @@ function Booking() {
                                 <div className='cusItem'>{item.phoneNumber}</div>
                                 {item.bookings.length > 0 ? (<p className='bookingHead'>Bookings</p>) : (<></>)}
                                 {item.bookings && item.bookings.map((bookItem, i) => (
-                                    <div className='bookPara'>&#x2022; Drone {bookItem.droneNumber} booked  for {bookItem.duration} Hrs</div>
+                                    <>
+                                        <div className='bookPara'>&#x2022; Drone {bookItem.droneNumber} booked  for {bookItem.duration} Hrs</div>
+                                        <div className='bookingButtons'>
+                                            <Link to='updatebooking' style={{ textDecoration: 'none' }} className='updatebooking'>
+                                                <div onClick={() => onClickHandleUpdateBooking(item, bookItem)}>Update</div>
+                                            </Link>
+                                            <div className='deleteBooking'>Delete</div>
+                                        </div>
+                                    </>
                                 ))}
-                                <div className='cusButtons'>
-                                    <Link to='updatecustomer' style={{ textDecoration: 'none' }} className="customUp">
-                                        <div className='updatecustomer' onClick={() => onClickHandleUpdate(item)}>Update</div>
+                                <div className='allButtons'>
+                                    <Link to='addbooking' style={{ textDecoration: 'none' }} className='bookingadd'>
+                                        <div className='addBooking' onClick={() => onClickHandleAddBooking(item)}>AddBooking</div>
                                     </Link>
-                                    <div className='deleteCustomer' onClick={() => onClickHandleDelate(item)}>Delete</div>
+                                    <div className='cusButtons'>
+                                        <Link to='updatecustomer' style={{ textDecoration: 'none' }} className="customUp">
+                                            <div className='updatecustomer' onClick={() => onClickHandleUpdate(item)}>Update</div>
+                                        </Link>
+                                        <div className='deleteCustomer' onClick={() => onClickHandleDelate(item)}>Delete</div>
+                                    </div>
                                 </div>
                             </div>
                         ))}
