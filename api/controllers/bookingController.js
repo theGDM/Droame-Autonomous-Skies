@@ -23,13 +23,27 @@ export const createBooking = async (req, res, next) => {
     }
 }
 
+export const updateBooking = async (req, res, next) => {
+    let { id } = req.params; //booking id
+    try {
+        const updatedBooking = await Booking.findByIdAndUpdate(
+            id,
+            { $set: req.body },
+            { new: true }
+        ); //it returns the previous booking json data, so we need to send new : true
+        res.status(200).json(updatedBooking);
+    } catch (err) {
+        next(err);
+    }
+}
+
 export const deleteBooking = async (req, res, next) => {
     const customerId = req.params.customerId;
     const bookingId = req.params.id;
     try {
         await Booking.findByIdAndDelete(bookingId);
         try {
-            await Customer.findByIdAndUpdate(customerId, { $pull: { bookings: bookingId } });//this will add the room in the rooms array of hotel schema
+            await Customer.findByIdAndUpdate(customerId, { $pull: { bookings: bookingId } });//this will add the booking in the booking array of customer schema
         } catch (err) {
             next(err);
         }
