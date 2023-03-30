@@ -25,7 +25,7 @@ name, email, phone number, and array of object which will keep the booking id in
 Booking schema have fields like drone number, i.e. which drone picked by the customer,
 and for the duration of use.
 
-## **Tools Used :
+## **Tools Used :**
 **`FrontEnd :`** To make the UI of the web application, I have used the **React.js** library, **HTML** ,
 and for making the UI more enhancing I have used the **Vanila CSS**.
 
