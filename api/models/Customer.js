@@ -20,7 +20,7 @@ const CustomerSchema = new mongoose.Schema({
         required: true
     },
     bookings: {
-        type: [new Object], //as it gonna contains, the id of customers, so it need to be array of string
+        type: [String], //as it gonna contains, the id of customers, so it need to be array of string
     }
 }, { timestamps: true }); //it gonna give created and updated at times
 
