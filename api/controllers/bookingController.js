@@ -1,11 +1,11 @@
 import Customer from "../models/Customer.js";
 import Booking from "../models/Booking.js";
-import { createError } from "../utills/error.js";
 
 export const createBooking = async (req, res, next) => {
     const customerId = req.params.customerId;
 
     const newBooking = await Booking({
+        customerId: customerId,
         droneNumber: req.body.droneNumber,
         duration: req.body.duration
     });
@@ -13,7 +13,7 @@ export const createBooking = async (req, res, next) => {
     try {
         const savedBooking = await newBooking.save();
         try {
-            await Customer.findByIdAndUpdate(customerId, { $push: { bookings: savedBooking } });//this will add the booking in the bookings array of the customer
+            await Customer.findByIdAndUpdate(customerId, { $push: { bookings: savedBooking._id } });//this will add the booking in the bookings array of the customer
         } catch (err) {
             next(err);
         }
@@ -40,10 +40,11 @@ export const updateBooking = async (req, res, next) => {
 export const deleteBooking = async (req, res, next) => {
     const customerId = req.params.customerId;
     const bookingId = req.params.id;
+    console.log(customerId + " " + bookingId);
     try {
         await Booking.findByIdAndDelete(bookingId);
         try {
-            await Customer.findByIdAndUpdate(customerId, { $pull: { bookings: bookingId } });//this will add the booking in the booking array of customer schema
+            await Customer.findByIdAndUpdate(customerId, { $pull: { bookings: bookingId } });//this will delete the booking in the booking array of customer schema
         } catch (err) {
             next(err);
         }
